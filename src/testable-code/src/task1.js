@@ -9,8 +9,12 @@ const TRIAD_TYPE = Object.freeze({
   AUGMENTED: 4,
 })
 
-const notes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-// const notes = ['do', 're', 'mi', 'fa', 'so', 'la', 'si']
+
+const notes1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+const notes2 = ['D♭', 'E♭', 'F', 'G♭', 'A♭', 'B♭', 'C']
+const notes3 = ['D', 'E', 'G♭', 'G♭', 'A', 'B', 'D♭']
+
+const notes = notes2
 
 const convert = (letter) => {
   return {
@@ -20,7 +24,7 @@ const convert = (letter) => {
     'D': 're',
     'E': 'mi',
     'F': 'fa',
-    'G': 'so',
+    'G': 'sol',
   }[letter]
 }
 
@@ -31,12 +35,17 @@ const generateAllPossibleSequences = length => {
     } else {
       for (let i = 0; i < notes.length; i++) {
         const note = notes[i]
-        generateAllPossibleSequencesRecursively(sequence + note, notes, acc)
+        const N = sequence.length
+        if (0 < N && sequence[N - 1] === 'note') {
+          return
+        } else {
+          generateAllPossibleSequencesRecursively([...sequence, note], notes, acc)
+        }
       }
     }
   }
   const results = []
-  generateAllPossibleSequencesRecursively('', notes, results)
+  generateAllPossibleSequencesRecursively([], notes, results)
   return results
 }
 
@@ -50,19 +59,20 @@ function generateTriadSeries(lengths) {
   }
 }
 
-generateTriadSeries([1, 2, 3])
+generateTriadSeries([4])
 
 const f = async () => {
   while (true) {
     const drawnSequence = itemsToDraw[Math.floor(Math.random() * itemsToDraw.length)]
     console.log('\n\n\n\n\n\n')
-    console.log(drawnSequence.split('').map(l => convert(l)).join(' '))
+    // console.log(drawnSequence.split('').map(l => convert(l)).join(' '))
+    console.log(drawnSequence.join(' '))
     console.log('\n\n\n\n\n\n')
-    await sleep(5000)
+    await sleep(15000)
   }
 }
 
-f().then(r => {})
+f().then(() => {})
 
 
 
