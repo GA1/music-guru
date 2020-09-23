@@ -12,9 +12,12 @@ const TRIAD_TYPE = Object.freeze({
 
 const notes1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 const notes2 = ['D♭', 'E♭', 'F', 'G♭', 'A♭', 'B♭', 'C']
-const notes3 = ['D', 'E', 'G♭', 'G♭', 'A', 'B', 'D♭']
+const notes3 = ['D', 'E', 'G♭', 'G', 'A', 'B', 'D♭']
+const notes4 = ['E♭', 'F', 'G', 'A♭', 'B♭', 'C', 'D']
+const notes5 = ['F', 'G', 'A', 'B♭', 'C', 'D', 'E']
+const notes6 = ['G♭', 'A♭', 'B♭', 'B', 'D♭', 'E♭', 'F']
 
-const notes = notes2
+const notes = notes3
 
 const convert = (letter) => {
   return {
@@ -36,7 +39,7 @@ const generateAllPossibleSequences = length => {
       for (let i = 0; i < notes.length; i++) {
         const note = notes[i]
         const N = sequence.length
-        if (0 < N && sequence[N - 1] === 'note') {
+        if (0 < N && sequence[N - 1] === note) {
           return
         } else {
           generateAllPossibleSequencesRecursively([...sequence, note], notes, acc)
@@ -66,6 +69,7 @@ const f = async () => {
     const drawnSequence = itemsToDraw[Math.floor(Math.random() * itemsToDraw.length)]
     console.log('\n\n\n\n\n\n')
     // console.log(drawnSequence.split('').map(l => convert(l)).join(' '))
+
     console.log(drawnSequence.join(' '))
     console.log('\n\n\n\n\n\n')
     await sleep(15000)
