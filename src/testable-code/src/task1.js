@@ -9,15 +9,33 @@ const TRIAD_TYPE = Object.freeze({
   AUGMENTED: 4,
 })
 
+const toSolfegeNote = (note) => {
+  let result = note
+  result = result.replace('C', 'do')
+  result = result.replace('D', 're')
+  result = result.replace('E', 'mi')
+  result = result.replace('F', 'fa')
+  result = result.replace('G', 'sol')
+  result = result.replace('A', 'la')
+  result = result.replace('B', 'si')
+  return result
+}
 
-const notes1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-const notes2 = ['D♭', 'E♭', 'F', 'G♭', 'A♭', 'B♭', 'C']
-const notes3 = ['D', 'E', 'G♭', 'G', 'A', 'B', 'D♭']
-const notes4 = ['E♭', 'F', 'G', 'A♭', 'B♭', 'C', 'D']
-const notes5 = ['F', 'G', 'A', 'B♭', 'C', 'D', 'E']
-const notes6 = ['G♭', 'A♭', 'B♭', 'B', 'D♭', 'E♭', 'F']
+const toSolfegeNotes = (notes) => {
+  return notes.map(n => toSolfegeNote(n))
+}
 
-const notes = notes3
+const C_major = 'C D E F G A B'
+const B_flat_major = 'B♭ C D E♭ F G A'
+const F_sharp_major = 'F♯ G♯ A♯ B C♯ D♯ E♯'
+
+const NUMBER_OF_CHORDS = 4
+
+const PAUSE = 15000
+
+// const notes = toSolfegeNotes(B_flat_major.split(' '))
+const notes = F_sharp_major.split(' ')
+
 
 const convert = (letter) => {
   return {
@@ -62,7 +80,7 @@ function generateTriadSeries(lengths) {
   }
 }
 
-generateTriadSeries([4])
+generateTriadSeries([NUMBER_OF_CHORDS])
 
 const f = async () => {
   while (true) {
@@ -72,7 +90,7 @@ const f = async () => {
 
     console.log(drawnSequence.join(' '))
     console.log('\n\n\n\n\n\n')
-    await sleep(15000)
+    await sleep(PAUSE)
   }
 }
 
