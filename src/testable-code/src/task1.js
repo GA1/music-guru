@@ -26,8 +26,13 @@ const toSolfegeNotes = (notes) => {
 }
 
 const C_major = 'C D E F G A B'
+const G_major = 'F♯ G A B C D E'
+const D_major = 'D E F♯ G A B C♯'
+const A_major = 'A B C D E F G'
+const E_major = 'E F♯ G♯ A B C♯ D♯'  // C♯ minor
+const F_sharp_major = 'F♯ G♯ A♯ B C♯ D♯ E♯' // D♯ minor
+
 const B_flat_major = 'B♭ C D E♭ F G A'
-const F_sharp_major = 'F♯ G♯ A♯ B C♯ D♯ E♯'
 
 const NUMBER_OF_CHORDS = 4
 
