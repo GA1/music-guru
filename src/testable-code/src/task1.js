@@ -95,8 +95,6 @@ function generateChordProgression(lengths) {
 
 generateChordProgression([NUMBER_OF_CHORDS])
 
-console.log(itemsToDraw)
-console.log(itemsToDraw.length)
 const f = async () => {
   while (true) {
     const drawnSequence =
