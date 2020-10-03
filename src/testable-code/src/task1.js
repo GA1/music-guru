@@ -38,17 +38,20 @@ const F_major = 'F G A B♭ C D E'.split(' ')
 
 const NUMBER_OF_CHORDS = 4
 
-const PAUSE_LENGTH = 15000
+const PAUSE_LENGTH = 35000
 const ALLOW_CONSECUTIVE_DUPLICATES = false
 
 const toMajorChords = scale => scale.map(note => note + 'maj')
 const toMinorChords = scale => scale.map(note => note + 'm')
 const to7Chords = scale => scale.map(note => note + '7')
+const toMaj7Chords = scale => scale.map(note => note + '7maj')
 const toMinor7Chords = scale => scale.map(note => note + 'm7')
+const to7b5Chords = scale => scale.map(note => note + 'm7b5')
 
 // const notes = toSolfegeNotes(B_flat_major.split(' '))
 // const notes = [...toMajorChords(C_major), ...toMinorChords(C_major), ...to7Chords(C_major)]
-const notes = [ ...to7Chords(C_major), ...toMinor7Chords(C_major)]
+// const notes = [ ...toMaj7Chords(C_major), ...to7b5Chords(C_major)]
+const notes = [ ...to7b5Chords(C_major)]
 
 const convert = letter => {
   return {
