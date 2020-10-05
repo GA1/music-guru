@@ -50,8 +50,9 @@ const to7b5Chords = scale => scale.map(note => note + 'm7b5')
 
 // const notes = toSolfegeNotes(B_flat_major.split(' '))
 // const notes = [...toMajorChords(C_major), ...toMinorChords(C_major), ...to7Chords(C_major)]
+const notes = [...toMinor7Chords(C_major)]
 // const notes = [ ...toMaj7Chords(C_major), ...to7b5Chords(C_major)]
-const notes = [ ...to7b5Chords(C_major)]
+// const notes = [ ...to7b5Chords(C_major)]
 
 const convert = letter => {
   return {
