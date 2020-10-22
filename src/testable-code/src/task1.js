@@ -33,29 +33,36 @@ const E_major = 'E F♯ G♯ A B C♯ D♯'.split(' ') // C♯ minor
 const F_sharp_major = 'F♯ G♯ A♯ B C♯ D♯ E♯'.split(' ') // D♯ minor
 
 const B_flat_major = 'B♭ C D E♭ F G A'.split(' ')
+const E_flat_major = 'E♭ F G A♭ B♭ C D'.split(' ')
 
 const F_major = 'F G A B♭ C D E'.split(' ')
 
-const NUMBER_OF_CHORDS = 4
 
-const PAUSE_LENGTH = 35000
-const ALLOW_CONSECUTIVE_DUPLICATES = false
-
-const toMajorChords = scale => scale.map(note => note + 'maj')
+const toMajorChords = scale => scale.map(note => note + '')
 const toMinorChords = scale => scale.map(note => note + 'm')
-const to7Chords = scale => scale.map(note => note + '7')
-const toMaj7Chords = scale => scale.map(note => note + '7maj')
-const toMinor7Chords = scale => scale.map(note => note + 'm7')
-const to7b5Chords = scale => scale.map(note => note + 'm7b5')
 
-// const notes = toSolfegeNotes(B_flat_major.split(' '))
-// const notes = [...toMajorChords(C_major), ...toMinorChords(C_major), ...to7Chords(C_major)]
-const notes = [...toMinor7Chords(C_major)]
-// const notes = [ ...toMaj7Chords(C_major), ...to7b5Chords(C_major)]
-// const notes = [ ...to7b5Chords(C_major)]
+const to_6 = scale => scale.map(note => note + '6') // C 6th chord
+const to_m6 = scale => scale.map(note => note + 'm6') // C minor 6th chord
+
+const to_m7 = scale => scale.map(note => note + 'm7') // C minor 7th chord
+const to_7 = scale => scale.map(note => note + '7')
+const to_maj7 = scale => scale.map(note => note + 'maj7')
+const to_m7b5 = scale => scale.map(note => note + 'm7b5')
+const tosus7 = scale => scale.map(note => note + 'sus7')
+const to_sus7 = scale => scale.map(note => note + 'sus7')
+
+
+const NUMBER_OF_CHORDS = 4
+const PAUSE_LENGTH = 90000
+const ALLOW_CONSECUTIVE_DUPLICATES = false
+// const scale = toSolfegeNotes(C_major)
+const scale = E_flat_major
+// const notes = [...to_m7(scale), ...to_maj7(scale), ...to_m7(scale), ...to_m7b5(scale)]
+const notes = [...toMinorChords(scale), ...toMajorChords(scale)]
 
 const convert = letter => {
   return {
+
     A: 'la',
     B: 'si',
     C: 'do',
@@ -107,7 +114,7 @@ const f = async () => {
     console.log('\n\n\n\n\n\n')
     // console.log(drawnSequence.split('').map(l => convert(l)).join(' '))
 
-    console.log(drawnSequence.join(' '))
+    console.log(drawnSequence.join('   '))
     console.log('\n\n\n\n\n\n')
     await sleep(PAUSE_LENGTH)
   }
