@@ -49,7 +49,6 @@ const to_7 = scale => scale.map(note => note + '7')
 const to_maj7 = scale => scale.map(note => note + 'maj7')
 const to_m7b5 = scale => scale.map(note => note + 'm7b5')
 const tosus7 = scale => scale.map(note => note + 'sus7')
-const to_sus7 = scale => scale.map(note => note + 'sus7')
 
 
 const NUMBER_OF_CHORDS = 4
@@ -58,7 +57,7 @@ const ALLOW_CONSECUTIVE_DUPLICATES = false
 // const scale = toSolfegeNotes(C_major)
 const scale = E_flat_major
 // const notes = [...to_m7(scale), ...to_maj7(scale), ...to_m7(scale), ...to_m7b5(scale)]
-const notes = [...toMinorChords(scale), ...toMajorChords(scale)]
+const notes = [...to_m7(scale), ...to_maj7(scale), ...to_7(scale), ...to_m7b5(scale)]
 
 const convert = letter => {
   return {
